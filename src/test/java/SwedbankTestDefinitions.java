@@ -6,9 +6,9 @@ import org.openqa.selenium.Keys;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.Assert.assertEquals;
 
-public class swedbankTestDefinitions {
+public class SwedbankTestDefinitions {
 
-    pageObjects calculator = new pageObjects();
+    PageObjects calculator = new PageObjects();
 
     @Given("Open browser with Swedbank loan calculator")
     public void openSwedbankLoanCalculatorPage() {
@@ -20,7 +20,6 @@ public class swedbankTestDefinitions {
 
     @When("I am applying for a loan with a co-applicant -> NO")
     public void iAmApplyingForALoanWithACoApplicantNO() {
-//        calculator.applyingWithCoApplicantCheckbox.click();
     }
 
     @When("I have children \\(dependants) in family -> YES")
@@ -35,7 +34,6 @@ public class swedbankTestDefinitions {
 
     @When("I have existing loan obligations \\(incl. in Swedbank) -> NO")
     public void iHaveExistingLoanObligationsInclInSwedbankNO() {
-//        calculator.existingLoanObligationsCheckbox.click();
     }
 
     @When("Total monthly income -> {int} EUR")
@@ -45,7 +43,7 @@ public class swedbankTestDefinitions {
         calculator.totalMonthlyIncome.sendKeys(String.valueOf(amount));
     }
 
-    @When("Choose loan amount -> {int} eur")
+    @When("Choose loan amount -> {int} EUR")
     public void chooseLoanAmountEur(int amount) {
         calculator.loanAmountInput.click();
         calculator.loanAmountInput.sendKeys(Keys.chord(Keys.ARROW_RIGHT, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE));
@@ -61,17 +59,17 @@ public class swedbankTestDefinitions {
         calculator.downPaymentInput.click();
     }
 
-    @Then("Find out monthly payment")
-    public void findOutMonthlyPayment() {
-        String monthlyPayment = calculator.monthlyLoanPayment.getText();
-        System.out.println("Maximum loan amount = " + monthlyPayment);
-        assertEquals("386", monthlyPayment);
+    @Then("Find out monthly payment and it should be {int} EUR")
+    public void findOutMonthlyPayment(int monthlyPayment) {
+        String monthlyPaymentOnPage = calculator.monthlyLoanPayment.getText();
+        System.out.println("Maximum loan amount = " + monthlyPaymentOnPage);
+        assertEquals(String.valueOf(monthlyPayment), monthlyPaymentOnPage);
     }
 
-    @Then("Find out loan amount")
-    public void findOutLoanAmount() {
-        String loanAmount = calculator.maximumLoanAmount.getText();
+    @Then("Find out loan amount and it should be {int} EUR")
+    public void findOutLoanAmount(int loanAmount) {
+        String loanAmountOnPage = calculator.maximumLoanAmount.getText();
         System.out.println("Maximum loan amount = " + loanAmount);
-        assertEquals("49739", loanAmount);
+        assertEquals(String.valueOf(loanAmount), loanAmountOnPage);
     }
 }

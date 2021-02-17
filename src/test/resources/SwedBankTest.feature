@@ -8,7 +8,7 @@ Feature: Swedbank loan calculator test
     When Dependants in family -> 2 or more
     When Total monthly income -> 1000 EUR
     When I have existing loan obligations (incl. in Swedbank) -> NO
-    When Choose loan amount -> 45000 eur
+    When Choose loan amount -> 45000 EUR
     When Choose loan term -> 11 years
-    Then Find out monthly payment
-    Then Find out loan amount
+    Then Find out monthly payment and it should be 386 EUR
+    Then Find out loan amount and it should be 49739 EUR

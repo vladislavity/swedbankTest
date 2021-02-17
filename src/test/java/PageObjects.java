@@ -3,7 +3,7 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class pageObjects {
+public class PageObjects {
     public final SelenideElement cookieBtnOne = $("button.ui-cookie-consent__manage-button");
     public final SelenideElement cookieBtnTwo = $("button.button.-guiding.-left.ui-cookie-consent__save-choice-button");
     public final SelenideElement calculatorContainer = $("button.button.-guiding.-left.ui-cookie-consent__save-choice-button");
