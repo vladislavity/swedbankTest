@@ -1,4 +1,4 @@
-# swedbankTest
+# swedbanktest
 
 To run test:
 
